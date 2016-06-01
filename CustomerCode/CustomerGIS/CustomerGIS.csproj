@@ -7,7 +7,7 @@
     <ProjectGuid>{3FE9B7FC-93CC-40C5-B56C-D09A2FE14AAF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CustomerGIS</RootNamespace>
+    <RootNamespace>Bingotao.Customer.GIS</RootNamespace>
     <AssemblyName>CustomerGIS</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
