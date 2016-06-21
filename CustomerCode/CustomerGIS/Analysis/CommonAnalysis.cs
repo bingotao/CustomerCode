@@ -26,7 +26,11 @@ namespace Bingotao.Customer.GIS.Analysis
             IFeature ft = null;
             try
             {
-                if (ftCls.ShapeType != esriGeometryType.esriGeometryPolygon) throw new Exception("分析的类型必须为面类型！");
+                if (ftCls.ShapeType != esriGeometryType.esriGeometryPolygon)
+                    throw new Exception("分析的类型必须为面类型！");
+                IField field = FeatureUtilities.GetField(ftCls, typeField);
+                if (field.Type != esriFieldType.esriFieldTypeString)
+                    throw new Exception("分析字段必须为字符型！");
 
                 (polygon as ITopologicalOperator).Simplify();
                 int typeFieldIndex = FeatureUtilities.GetFieldIndex(ftCls, typeField);
