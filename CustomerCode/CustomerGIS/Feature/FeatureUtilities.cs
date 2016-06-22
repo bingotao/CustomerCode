@@ -9,6 +9,14 @@ namespace Bingotao.Customer.GIS.Feature
 {
     public class FeatureUtilities
     {
+
+        public static IField GetField(IFeatureClass ftCls, string fieldName)
+        {
+            int fieldIndex = GetFieldIndex(ftCls, fieldName);
+            return ftCls.Fields.Field[fieldIndex];
+        }
+
+
         /// <summary>
         /// 获取字段的索引号
         /// </summary>
@@ -18,10 +26,8 @@ namespace Bingotao.Customer.GIS.Feature
         public static int GetFieldIndex(IFeatureClass ftCls, string field)
         {
             int index = ftCls.FindField(field);
-            ValidateFieldIndex(field, index);
             return index;
         }
-
 
         /// <summary>
         /// 获取字段的索引号
@@ -31,9 +37,7 @@ namespace Bingotao.Customer.GIS.Feature
         /// <returns></returns>
         public static int GetFieldIndex(IFeature ft, string field)
         {
-            int index = ft.Fields.FindField(field);
-            ValidateFieldIndex(field, index);
-            return index;
+            return ft.Fields.FindField(field);
         }
 
         /// <summary>
