@@ -53,7 +53,9 @@
     <Compile Include="DataBase\DBContext.cs" />
     <Compile Include="Entity\EntityUtilities.cs" />
     <Compile Include="Entity\TableDictionaryUtilities.cs" />
+    <Compile Include="Image\ImageConverter.cs" />
     <Compile Include="Image\MakeThum.cs" />
+    <Compile Include="IO\StreamConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
