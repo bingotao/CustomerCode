@@ -7,7 +7,7 @@ using System.Drawing.Imaging;
 using System.Drawing;
 using System.IO;
 
-namespace Thumbnail
+namespace Bingotao.Customer.BaseLib
 {
     public class MakeThum
     {
@@ -17,6 +17,49 @@ namespace Thumbnail
             //TODO: 在此处添加构造函数逻辑
             //
         }
+
+
+        public static Image PictureResize(Image image, int newMaxHeight, int newMaxWidth)
+        {
+            Image newImage = null;
+            try
+            {
+                //原始高度
+                int iOH = image.Height;
+                //原始宽度
+                int iOW = image.Width;
+                //原始高宽比
+                double dORatio = (double)iOH / iOW;
+                //压缩后宽高比
+                double dNRation = (double)newMaxHeight / newMaxWidth;
+                //压缩比
+                double dPressRatio = 1.0;
+                if (newMaxHeight == 0)
+                {
+                    dPressRatio = (double)iOW / newMaxWidth;
+                }
+                else if (newMaxWidth == 0)
+                {
+                    dPressRatio = (double)iOH / newMaxHeight;
+                }
+                else
+                {
+                    dPressRatio = dORatio > dNRation ? (double)iOH / newMaxHeight : (double)iOW / newMaxWidth;
+                }
+                //新图片高度
+                int iNH = (int)(iOH / dPressRatio);
+                //新图片宽度
+                int iNW = (int)(iOW / dPressRatio);
+                //新图片
+                newImage = new System.Drawing.Bitmap(image, iNW, iNH);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            return newImage;
+        }
+
 
         public static void PictureResize(string sOriginalImagePath, string sResizedImagePath, int iNewMaxHeight, int iNewMaxWidth, bool bPress = false)
         {
