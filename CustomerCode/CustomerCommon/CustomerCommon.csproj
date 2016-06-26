@@ -56,6 +56,10 @@
     <Compile Include="Image\ImageConverter.cs" />
     <Compile Include="Image\MakeThum.cs" />
     <Compile Include="IO\StreamConverter.cs" />
+    <Compile Include="Json\CustomDateTimeConverter.cs" />
+    <Compile Include="Json\CustomDecimalConverter.cs" />
+    <Compile Include="Json\CustomDoubleConverter.cs" />
+    <Compile Include="Json\CustomerSerialize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
