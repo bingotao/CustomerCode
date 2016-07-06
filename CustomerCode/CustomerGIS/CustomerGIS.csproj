@@ -66,6 +66,8 @@
   <ItemGroup>
     <Compile Include="Analysis\CommonAnalysis.cs" />
     <Compile Include="Feature\FeatureUtilities.cs" />
+    <Compile Include="Gemetry\GeometryUtilities.cs" />
+    <Compile Include="Gemetry\PointThin.cs" />
     <Compile Include="Geometry\PolygonConstructor.cs" />
     <Compile Include="LicenseInitializer\LicenseInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

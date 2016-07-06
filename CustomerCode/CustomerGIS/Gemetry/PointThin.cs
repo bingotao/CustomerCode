@@ -1,37 +1,14 @@
-﻿using Bingotao.Customer.BaseLib.Entity;
-using Bingotao.Customer.GIS;
-using Bingotao.Customer.GIS.Analysis;
-using Bingotao.Customer.GIS.LicenseInitializer;
+﻿using Bingotao.Customer.GIS.Releaser;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Converters;
-using Bingotao.Customer.BaseLib;
-using Oracle.ManagedDataAccess.Client;
-using Bingotao.Customer.GIS.Releaser;
-using Bingotao.Customer.GIS.Gemetry;
 
-namespace ConsoleTest
+namespace Bingotao.Customer.GIS.Gemetry
 {
-    class Program
-    {
-
-        static void Main(string[] args)
-        {
-            IFeatureClass pFtCls = null;
-            IEnvelope envelope = null;
-
-
-
-        }
-
-    }
-
     public class PointThin
     {
         private IFeatureClass ftClsSource = null;
@@ -49,6 +26,11 @@ namespace ConsoleTest
             tFieldIndex = ftClsTarget.Fields.FindField(field);
             ((IFeatureClassManage)ftClsSource).UpdateExtent();
             envelope = (ftClsSource as IGeoDataset).Extent;
+        }
+
+        public void Start()
+        {
+            Thin(envelope);
         }
 
         public void Thin(IEnvelope envelope)
