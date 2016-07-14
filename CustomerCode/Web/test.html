@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script>
+        djConfig = {
+            serverIP: '127.0.0.1/arcgisapi/3.16/'
+        };
+    </script>
+    <link type="text/css" rel="stylesheet" href="http://localhost/arcgisapi/3.16/esri/css/esri.css" />
+    <script src="http://localhost/arcgisapi/3.16/init.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+
+        #map {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <script>
+        var map = null;
+        require(['esri/map', 'lib/gaodeLayer', 'dojo/domReady!'], function (Map, TDTLayer) {
+            map = new Map('map', { logo: false });
+            var layer1 = new TDTLayer();
+            var layer2 = new TDTLayer()
+            map.addLayers([layer1]);
+        });
+    </script>
+</head>
+<body>
+    <div id="map"></div>
+</body>
+</html>
