@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\SystemParameters.cs" />
+    <Compile Include="Convert\DataConvert.cs" />
     <Compile Include="DataBase\DBContext.cs" />
     <Compile Include="Entity\EntityUtilities.cs" />
     <Compile Include="Entity\TableDictionaryUtilities.cs" />
