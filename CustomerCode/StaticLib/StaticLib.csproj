@@ -45,6 +45,8 @@
   <ItemGroup>
     <Content Include="DLL\Aspose.Cells.dll" />
     <Content Include="DLL\EntityFramework.dll" />
+    <Content Include="DLL\MySql.Data.dll" />
+    <Content Include="DLL\MySql.Data.Entity.EF6.dll" />
     <Content Include="DLL\Newtonsoft.Json.dll" />
     <Content Include="DLL\Oracle.ManagedDataAccess.dll" />
     <Content Include="DLL\Oracle.ManagedDataAccess.EntityFramework.dll" />
