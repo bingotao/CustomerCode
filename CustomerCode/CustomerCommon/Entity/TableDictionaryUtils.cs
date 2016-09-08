@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Bingotao.Customer.BaseLib.Entity
 {
-    public static class TableDictionaryUtilities
+    public static class TableDictionaryUtils
     {
         /// <summary>
         /// DataRow 转换为 Dictionary
@@ -28,21 +28,7 @@ namespace Bingotao.Customer.BaseLib.Entity
                     object value = dr[colName];
                     if (value == DBNull.Value)
                     {
-                        string colType = dc.DataType.Name.ToLower();
-                        switch (colType)
-                        {
-                            case "int":
-                            case "double":
-                            case "float":
-                            case "decimal":
-                                value = 0;
-                                break;
-                            case "string":
-                            case "datetime":
-                            default:
-                                value = string.Empty;
-                                break;
-                        }
+                        value = TypeConvert.ConvertType(value, dc.DataType);
                     }
                     dict[colName] = value;
                 }

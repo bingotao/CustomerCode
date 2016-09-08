@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Converters;
 using System.Data.OleDb;
+using Bingotao.Customer.BaseLib;
 
 namespace ConsoleTest
 {
@@ -13,6 +14,13 @@ namespace ConsoleTest
     {
 
         static void Main(string[] args)
+        {
+
+            var v = Convert.ChangeType(new List<int> { 1, 2, 3 }, typeof(List<double>));
+
+        }
+
+        public void Region()
         {
             string sql = @"select tdmj as v,point_x as x,point_y as y from points";
             string con = @"provider=microsoft.jet.oledb.4.0; Data Source=E:\Data\test.mdb;";
@@ -35,22 +43,22 @@ namespace ConsoleTest
 
             List<Point> newPoints = new List<Point>();
             Region rg = new Region(et, pnts, 0, 50, p =>
-             {
-                 if (p.PointsCount != 0)
-                 {
-                     var max = p.Points[0];
-                     double value = 0;
-                     foreach (Point pnt in p.Points)
-                     {
-                         if (pnt.value > max.value)
-                         {
-                             max = pnt;
-                         }
-                         value += pnt.value;
-                     }
-                     newPoints.Add(new Point() { x = max.x, y = max.y, value = value });
-                 }
-             });
+            {
+                if (p.PointsCount != 0)
+                {
+                    var max = p.Points[0];
+                    double value = 0;
+                    foreach (Point pnt in p.Points)
+                    {
+                        if (pnt.value > max.value)
+                        {
+                            max = pnt;
+                        }
+                        value += pnt.value;
+                    }
+                    newPoints.Add(new Point() { x = max.x, y = max.y, value = value });
+                }
+            });
             rg.DoRegion();
 
             StringBuilder sb = new StringBuilder();
@@ -61,6 +69,8 @@ namespace ConsoleTest
             string s = sb.ToString();
         }
     }
+
+
 
 
     public class Point

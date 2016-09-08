@@ -6,13 +6,21 @@ using System.Threading.Tasks;
 
 namespace Bingotao.Customer.BaseLib
 {
-    public class DataConvert
+    public class TypeConvert
     {
-        public static object ChangeType(object value, Type type)
+        public static object ConvertType(object value, Type type)
         {
-            if (value == null && type.IsGenericType) return Activator.CreateInstance(type);
-            if (value == null) return null;
+            //为空，并且类型为内置类型返回默认值
+            if (value == null)
+            {
+                //内置类型返回默认值，引用类型返回空
+                return type.IsPrimitive ? Activator.CreateInstance(type) : null;
+            }
+
+            //目标类型和原始类型相同
             if (type == value.GetType()) return value;
+
+            //目标类型为枚举类型
             if (type.IsEnum)
             {
                 if (value is string)
@@ -20,11 +28,12 @@ namespace Bingotao.Customer.BaseLib
                 else
                     return Enum.ToObject(type, value);
             }
+
             if (!type.IsInterface && type.IsGenericType)
             {
-                Type innerType = type.GetGenericArguments()[0];
-                object innerValue = ChangeType(value, innerType);
-                return Activator.CreateInstance(type, new object[] { innerValue });
+                Type innerTypeTo = type.GetGenericArguments()[0];
+                object innerValue = ConvertType(value, innerTypeTo);
+                return Activator.CreateInstance(type, innerValue);
             }
             if (value is string && type == typeof(Guid)) return new Guid(value as string);
             if (value is string && type == typeof(Version)) return new Version(value as string);

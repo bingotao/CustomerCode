@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Bingotao.Customer.BaseLib
 {
-    public static class EntityUtilities
+    public static class EntityUtils
     {
         public static T DictionaryToEntiity<T>(Dictionary<string, object> dict) where T : class, new()
         {
@@ -76,7 +76,7 @@ namespace Bingotao.Customer.BaseLib
                 {
                     var pType = prop.PropertyType;
                     var value = dr[colName];
-                    var valueNew = DataConvert.ChangeType(value, pType);
+                    var valueNew = TypeConvert.ConvertType(value, pType);
                     prop.SetValue(entity, valueNew);
                 }
             }
@@ -89,7 +89,7 @@ namespace Bingotao.Customer.BaseLib
         /// <typeparam name="T"></typeparam>
         /// <param name="dt"></param>
         /// <returns></returns>
-        public static List<T> DataTableToList<T>(DataTable dt) where T : new()
+        public static List<T> DataTableToEntityList<T>(DataTable dt) where T : new()
         {
             List<T> list = new List<T>();
             PropertyInfo[] props = GetSetProperties<T>();

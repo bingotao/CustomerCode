@@ -10,12 +10,25 @@ namespace Bingotao.Customer.BaseLib
 {
     public class SystemParameters
     {
-        /// <summary>        /// 线程锁定对象        /// </summary>        static readonly object _lockObject = new object();
+        /// <summary>
+        /// 线程锁定对象
+        /// </summary>
+        static readonly object _lockObject = new object();
 
-        /// <summary>        /// 静态实例对象        /// </summary>        private static dynamic _Instance;
+        /// <summary>
+        /// 静态实例对象
+        /// </summary>
+        private static dynamic _Instance;
         
-        /// <summary>        /// 系统配置文件位置        /// </summary>        static string configPath = ConfigurationManager.AppSettings["ConfigPath"];
-        /// <summary>        /// 静态实例属性        /// </summary>        public static dynamic Instance
+        /// <summary>
+        /// 系统配置文件位置
+        /// </summary>
+        static string configPath = ConfigurationManager.AppSettings["ConfigPath"];
+
+        /// <summary>
+        /// 静态实例属性
+        /// </summary>
+        public static dynamic Instance
         {
             get
             {
