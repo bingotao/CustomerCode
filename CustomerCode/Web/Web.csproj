@@ -186,6 +186,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="test\measureTool.html" />
+    <Content Include="Scripts\bingotao\arcgis_extend\measureTool.js" />
     <Content Include="Scripts\bingotao\css\widgets.css" />
     <Content Include="Scripts\bingotao\js\utilities.js" />
     <Content Include="Scripts\bingotao\js\widgets.js" />

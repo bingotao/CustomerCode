@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Labeling features client-side</title>
+    <link rel="stylesheet" href="http://127.0.0.1/arcgisapi_3.17/esri/css/esri.css">
+    <style>
+        html, body, #map { height: 100%; width: 100%; margin: 0; padding: 0; }
+    </style>
+    <script>
+        djConfig = {
+            serverIP: '127.0.0.1/arcgisapi_3.17'
+        };
+    </script>
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="http://127.0.0.1/arcgisapi_3.17/init.js"></script>
+    <script>
+        var map;
+
+        require([
+          "esri/map",
+          "esri/layers/ArcGISTiledMapServiceLayer",
+          "esri/layers/ArcGISDynamicMapServiceLayer",
+          'extend/measureTool',
+          "dojo/domReady!"
+        ], function (
+            Map,
+            ArcGISTiledMapServiceLayer,
+            ArcGISDynamicMapServiceLayer,
+            MeasureTool
+            ) {
+            map = new esri.Map('map', { logo: false });
+            layer0 = new esri.layers.ArcGISTiledMapServiceLayer('http://60.191.110.204:6080/arcgis/rest/services/FY_IMAGE2015/MapServer');
+            map.addLayer(layer0);
+            measureTool = new MeasureTool(map);
+        });
+    </script>
+</head>
+<body>
+    <div id="map"></div>
+</body>
+</html>
